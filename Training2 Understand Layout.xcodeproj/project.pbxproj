@@ -15,6 +15,7 @@
 		8A5F3CC12382619F00B96748 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5F3CBF2382619F00B96748 /* LaunchScreen.storyboard */; };
 		8A5F3CCC2382619F00B96748 /* Training2_Understand_LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F3CCB2382619F00B96748 /* Training2_Understand_LayoutTests.swift */; };
 		8A5F3CD72382619F00B96748 /* Training2_Understand_LayoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F3CD62382619F00B96748 /* Training2_Understand_LayoutUITests.swift */; };
+		8AE124502383B6E800AF1D69 /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE1244F2383B6E800AF1D69 /* MyCustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		8A5F3CD22382619F00B96748 /* Training2 Understand LayoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Training2 Understand LayoutUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5F3CD62382619F00B96748 /* Training2_Understand_LayoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training2_Understand_LayoutUITests.swift; sourceTree = "<group>"; };
 		8A5F3CD82382619F00B96748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AE1244F2383B6E800AF1D69 /* MyCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				8A5F3CBD2382619F00B96748 /* Assets.xcassets */,
 				8A5F3CBF2382619F00B96748 /* LaunchScreen.storyboard */,
 				8A5F3CC22382619F00B96748 /* Info.plist */,
+				8AE1244F2383B6E800AF1D69 /* MyCustomView.swift */,
 			);
 			path = "Training2 Understand Layout";
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5F3CB92382619B00B96748 /* ViewController.swift in Sources */,
+				8AE124502383B6E800AF1D69 /* MyCustomView.swift in Sources */,
 				8A5F3CB52382619B00B96748 /* AppDelegate.swift in Sources */,
 				8A5F3CB72382619B00B96748 /* SceneDelegate.swift in Sources */,
 			);
