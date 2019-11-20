@@ -10,122 +10,77 @@ import Foundation
 import UIKit
 
 public class MyCustomView : UIView {
+    let messageInfo = "Last log in 2019/11/07 12:00"
     
-    let messageInfo = "[Last log in 2019/11/07 12:00]"
- 
-
-    lazy var messageLabel: UILabel = {
-      let messageLabel = UILabel()
-    //messageLabel.isHidden = true
-    messageLabel.text = messageInfo
-    messageLabel.textAlignment = .left
-    messageLabel.font = UIFont.systemFont(ofSize: 16)
-    messageLabel.translatesAutoresizingMaskIntoConstraints = false
-      return messageLabel
-    }()
-    
-    private lazy var loginBtn: UIButton = {
-        let loginBtn = UIButton()
-        loginBtn.setTitle("Login", for: .normal)
-        loginBtn.backgroundColor = .blue
-        loginBtn.translatesAutoresizingMaskIntoConstraints = false
-        return loginBtn
-    }()
-    
-    private lazy var logoutBtn : UIButton = {
-        let logoutBtn = UIButton()
-       //logoutBtn.isHidden = true
-       logoutBtn.setTitle("Logout", for: .normal)
-       logoutBtn.backgroundColor = .red
-       logoutBtn.translatesAutoresizingMaskIntoConstraints = false
-        return logoutBtn
-    }()
-    
-    private lazy var settingBtn : UIButton = {
-    let settingBtn = UIButton()
-       settingBtn.setTitle("Settings", for: .normal)
-       settingBtn.backgroundColor = .black
-       settingBtn.translatesAutoresizingMaskIntoConstraints = false
-        
-        return settingBtn
-    }()
-    
-    
-    private lazy var contentView : UIView = {
-        let contentView = UIView()
-        contentView.addSubview(messageLabel)
-        contentView.addSubview(loginBtn)
-        contentView.addSubview(logoutBtn)
-        contentView.addSubview(settingBtn)
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return contentView
-    }()
-    
+    var messageLabel: CustomLabel!
+    var loginBtn: CustomButton!
+    var logoutBtn : CustomButton!
+    var settingBtn : CustomButton!
     
     public override init(frame: CGRect) {
         super.init(frame:frame)
-        setupDesign()
+        setupView()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupDesign()
+        setupView()
     }
     
-    private func setupDesign(){
-        addSubview(contentView)
-        setupConstraint()
-        setupButton()
+    override public func layoutSubviews() {
+        super.layoutSubviews()
     }
     
-    private func setupButton(){
-          loginBtn.addTarget(self, action: #selector(btnClick), for: .touchUpInside)
-          //logoutBtn.addTarget(MyCustomView.self, action: #selector(btnClick(sender:)), for: .touchUpInside)
-      }
-    
-    @objc private func btnClick(){
-      print("btnClick clicked")
-//      messageLabel.isHidden = false
-//      logoutBtn.isHidden = false
-//      loginBtn.isHidden = true
-   
-//           if (sender === loginBtn) {
-//               messageLabel.isHidden = false
-//               logoutBtn.isHidden = false
-//               loginBtn.isHidden = true
-//
-//                print("btnLogin clicked")
-//
-//           }
-//            else if sender === logoutBtn {
-//                   logoutBtn.isHidden = true
-//                   loginBtn.isHidden = false
-//          }
-              
-       }
-  
-    
-  
-    
-    private func setupConstraint(){
-        //messageLabel Constraint
-        messageLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        messageLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        messageLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+    func setupView(){
+        //messageLabel Setup
+        messageLabel = CustomLabel(frame: CGRect(x: 0, y: frame.height / 2,width: 0, height: 100))
+        messageLabel.text = messageInfo
+        messageLabel.textAlignment = .left
+        messageLabel.margin = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        messageLabel.font = UIFont.systemFont(ofSize: 16)
+        messageLabel.sizeToFit()
         
-        //loginBtn Constraint
-        loginBtn.leftAnchor.constraint(equalTo: messageLabel.rightAnchor,constant: 10).isActive = true
-        loginBtn.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        //loginBtn Setup
+        loginBtn = CustomButton()
+        loginBtn.frame = CGRect(x:messageLabel.frame.maxX, y: frame.height / 2, width: 50, height: 50)
+        loginBtn.setTitle("Login", for: .normal)
+        loginBtn.backgroundColor = .blue
+        loginBtn.addTarget(self, action: #selector(loginBtnClick), for: .touchUpInside)
+        loginBtn.sizeToFit()
         
-        //logoutBtn Constraint
-        logoutBtn.leftAnchor.constraint(equalTo: loginBtn.rightAnchor,constant: 10).isActive = true
-        logoutBtn.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-
-        //settingBtn Constraint
-        settingBtn.leftAnchor.constraint(equalTo: logoutBtn.rightAnchor,constant: 10).isActive = true
-        settingBtn.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-       
+        //logoutBtn Setup
+        logoutBtn = CustomButton()
+        logoutBtn.isHidden = true
+        logoutBtn.frame = CGRect(x: messageLabel.frame.maxX, y: frame.height / 2, width: 60, height: 50)
+        logoutBtn.setTitle("Logout", for: .normal)
+        logoutBtn.backgroundColor = .red
+        logoutBtn.addTarget(self, action: #selector(logoutBtnClick), for: .touchUpInside)
+        logoutBtn.sizeToFit()
+        
+        //settingBtn Setup
+        settingBtn = CustomButton()
+        settingBtn.frame = CGRect(x: logoutBtn.frame.maxX, y: frame.height / 2, width: 70, height: 50)
+        settingBtn.setTitle("Settings", for: .normal)
+        settingBtn.backgroundColor = .black
+        settingBtn.sizeToFit()
+        
+        addSubview(messageLabel)
+        addSubview(loginBtn)
+        addSubview(logoutBtn)
+        addSubview(settingBtn)
+    }
+    
+    
+    @objc func loginBtnClick(){
+        print("loginBtnClick clicked")
+        logoutBtn.isHidden = false
+        loginBtn.isHidden = true
+    }
+    
+    @objc func logoutBtnClick(){
+        print("logoutBtnClick clicked")
+        logoutBtn.isHidden = true
+        loginBtn.isHidden = false
     }
     
 }
