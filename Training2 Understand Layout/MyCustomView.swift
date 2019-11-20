@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 public class MyCustomView : UIView {
-    var xOffsets : [CGFloat] = []
     
     let messageInfo = "Last log in 2019/11/07 12:00"
     
@@ -19,48 +18,56 @@ public class MyCustomView : UIView {
     var logoutBtn : CustomButton!
     var settingBtn : CustomButton!
     
-    init(height: CGFloat){
-        super.init(frame: CGRect(x: 0,y: 0,width: 150, height: height))
+    public func initView(){
+        
         setupView()
     }
     
     
-     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-        setupView()
-    }
     
     override public func layoutSubviews() {
         super.layoutSubviews()
         updateLayout()
     }
     
-    
+    //Update View Frame Setup
     func updateLayout(){
-        var width: CGFloat = 0
         
-        for i in 0..<subviews.count{
-            let view = subviews[i] as UIView
-            view.layoutSubviews()
-            width += xOffsets[i]
-            view.frame.origin.x = width
-            width += view.frame.width
+        let width:CGFloat = self.bounds.width
+        
+        let messageLabelRect: CGSize = messageLabel.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
+        
+        let logInBtnRect: CGSize = loginBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
+        
+        let logOutBtnRect: CGSize = logoutBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
+        
+        let settingBtnRect: CGSize = settingBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
+        
+        var x = width
+        
+        x -= 10
+        x -= settingBtnRect.width
+        
+        settingBtn.frame = CGRect(x: x,y:30,width: settingBtnRect.width, height: settingBtnRect.height)
+        
+        if loginBtn.isHidden == false {
+            x -= 10
+            x -= logInBtnRect.width
+            loginBtn.frame   = CGRect(x: x, y:30,width: logInBtnRect.width,   height: logInBtnRect.height)
         }
         
-        self.frame.size.width = width
-    }
-    
-    override public func addSubview(_ view: UIView) {
-        xOffsets.append(view.frame.origin.x)
-        super.addSubview(view)
-    }
-    
-    func removeAll(){
-        for view in subviews{
-            view.removeFromSuperview()
+        if logoutBtn.isHidden == false {
+            x -= 10
+            x -= logOutBtnRect.width
+            logoutBtn.frame  = CGRect(x: x, y:30,width: logOutBtnRect.width,  height: logOutBtnRect.height)
         }
-        xOffsets.removeAll(keepingCapacity: false)
+        
+        x -= 10
+        
+        messageLabel.frame = CGRect(x:  10, y:35, width: x - 10,  height: messageLabelRect.height)
     }
+    
+    
     
     func setupView(){
         //messageLabel Setup
@@ -80,7 +87,7 @@ public class MyCustomView : UIView {
         
         //logoutBtn Setup
         logoutBtn = CustomButton()
-        logoutBtn.isHidden = true
+        
         logoutBtn.frame = CGRect(x:10, y: 50, width: 0, height: 0)
         logoutBtn.setTitle("Logout", for: .normal)
         logoutBtn.backgroundColor = .red
@@ -98,19 +105,25 @@ public class MyCustomView : UIView {
         addSubview(loginBtn)
         addSubview(logoutBtn)
         addSubview(settingBtn)
+        
+        //Button Visible Status
+        logoutBtn.isHidden = true
+        loginBtn.isHidden = false
     }
     
-    
+    // Button Events
     @objc func loginBtnClick(){
         print("loginBtnClick clicked")
         logoutBtn.isHidden = false
         loginBtn.isHidden = true
+        setNeedsLayout()//important
     }
     
     @objc func logoutBtnClick(){
         print("logoutBtnClick clicked")
         logoutBtn.isHidden = true
         loginBtn.isHidden = false
+        setNeedsLayout()//important
     }
     
 }

@@ -10,14 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var contentView : MyCustomView!
+    var contentView = MyCustomView()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        contentView = MyCustomView(height: 0)
+        
         contentView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(contentView)
+        contentView.initView()
         
         //Set Content View Constraint To Center
         contentView.widthAnchor.constraint(equalToConstant: 400).isActive = true
