@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 public class MyCustomView : UIView {
+    var xOffsets : [CGFloat] = []
+    
     let messageInfo = "Last log in 2019/11/07 12:00"
     
     var messageLabel: CustomLabel!
@@ -17,32 +19,60 @@ public class MyCustomView : UIView {
     var logoutBtn : CustomButton!
     var settingBtn : CustomButton!
     
-    public override init(frame: CGRect) {
-        super.init(frame:frame)
+    init(height: CGFloat){
+        super.init(frame: CGRect(x: 0,y: 0,width: 150, height: height))
         setupView()
     }
     
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    
+     required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
         setupView()
     }
     
     override public func layoutSubviews() {
         super.layoutSubviews()
+        updateLayout()
+    }
+    
+    
+    func updateLayout(){
+        var width: CGFloat = 0
+        
+        for i in 0..<subviews.count{
+            let view = subviews[i] as UIView
+            view.layoutSubviews()
+            width += xOffsets[i]
+            view.frame.origin.x = width
+            width += view.frame.width
+        }
+        
+        self.frame.size.width = width
+    }
+    
+    override public func addSubview(_ view: UIView) {
+        xOffsets.append(view.frame.origin.x)
+        super.addSubview(view)
+    }
+    
+    func removeAll(){
+        for view in subviews{
+            view.removeFromSuperview()
+        }
+        xOffsets.removeAll(keepingCapacity: false)
     }
     
     func setupView(){
         //messageLabel Setup
-        messageLabel = CustomLabel(frame: CGRect(x: 0, y: frame.height / 2,width: 0, height: 100))
+        messageLabel = CustomLabel(frame: CGRect(x: 10, y: 50,width: 0, height: 0))
         messageLabel.text = messageInfo
         messageLabel.textAlignment = .left
-        messageLabel.margin = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         messageLabel.font = UIFont.systemFont(ofSize: 16)
         messageLabel.sizeToFit()
         
         //loginBtn Setup
         loginBtn = CustomButton()
-        loginBtn.frame = CGRect(x:messageLabel.frame.maxX, y: frame.height / 2, width: 50, height: 50)
+        loginBtn.frame = CGRect(x:10, y: 50, width: 0, height: 0)
         loginBtn.setTitle("Login", for: .normal)
         loginBtn.backgroundColor = .blue
         loginBtn.addTarget(self, action: #selector(loginBtnClick), for: .touchUpInside)
@@ -51,7 +81,7 @@ public class MyCustomView : UIView {
         //logoutBtn Setup
         logoutBtn = CustomButton()
         logoutBtn.isHidden = true
-        logoutBtn.frame = CGRect(x: messageLabel.frame.maxX, y: frame.height / 2, width: 60, height: 50)
+        logoutBtn.frame = CGRect(x:10, y: 50, width: 0, height: 0)
         logoutBtn.setTitle("Logout", for: .normal)
         logoutBtn.backgroundColor = .red
         logoutBtn.addTarget(self, action: #selector(logoutBtnClick), for: .touchUpInside)
@@ -59,7 +89,7 @@ public class MyCustomView : UIView {
         
         //settingBtn Setup
         settingBtn = CustomButton()
-        settingBtn.frame = CGRect(x: logoutBtn.frame.maxX, y: frame.height / 2, width: 70, height: 50)
+        settingBtn.frame = CGRect(x: 10, y: 50, width: 0, height: 0)
         settingBtn.setTitle("Settings", for: .normal)
         settingBtn.backgroundColor = .black
         settingBtn.sizeToFit()
