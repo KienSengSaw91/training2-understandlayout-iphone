@@ -11,31 +11,23 @@ import UIKit
 
 public class MyCustomView : UIView {
     
-    let messageInfo = "Last log in 2019/11/07 12:00"
-    
-    var messageLabel: CustomLabel!
-    var loginBtn: CustomButton!
-    var logoutBtn : CustomButton!
-    var settingBtn : CustomButton!
-    
+    private let messageLabel: UILabel = UILabel()
+    private let loginBtn: UIButton = UIButton()
+    private let logoutBtn : UIButton = UIButton()
+    private let settingBtn : UIButton = UIButton()
     
     override public init(frame: CGRect) {
         super.init(frame:frame)
-         setupView()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    
     override public func layoutSubviews() {
         super.layoutSubviews()
-        updateLayout()
-    }
-    
-    //Update View Frame Setup
-    func updateLayout(){
         
         let width:CGFloat = self.bounds.width
         let messageLabelRect: CGSize = messageLabel.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
@@ -68,34 +60,32 @@ public class MyCustomView : UIView {
     }
     
     
-    
-    func setupView(){
-    
+    private func setupView(){
+        
         //messageLabel Setup
-        messageLabel = CustomLabel()
-        messageLabel.text = messageInfo
+        messageLabel.text = "Last log in 2019/11/07 12:00"
         messageLabel.textAlignment = .left
         messageLabel.font = UIFont.systemFont(ofSize: 16)
         messageLabel.sizeToFit()
         
         //loginBtn Setup
-        loginBtn = CustomButton()
         loginBtn.setTitle("Login", for: .normal)
         loginBtn.backgroundColor = .blue
+        loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         loginBtn.addTarget(self, action: #selector(loginBtnClick), for: .touchUpInside)
         loginBtn.sizeToFit()
         
         //logoutBtn Setup
-        logoutBtn = CustomButton()
         logoutBtn.setTitle("Logout", for: .normal)
         logoutBtn.backgroundColor = .red
+        logoutBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         logoutBtn.addTarget(self, action: #selector(logoutBtnClick), for: .touchUpInside)
         logoutBtn.sizeToFit()
         
         //settingBtn Setup
-        settingBtn = CustomButton()
         settingBtn.setTitle("Settings", for: .normal)
         settingBtn.backgroundColor = .black
+        settingBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         settingBtn.sizeToFit()
         
         addSubview(messageLabel)

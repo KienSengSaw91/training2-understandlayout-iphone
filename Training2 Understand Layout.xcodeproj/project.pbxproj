@@ -16,8 +16,6 @@
 		8A5F3CCC2382619F00B96748 /* Training2_Understand_LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F3CCB2382619F00B96748 /* Training2_Understand_LayoutTests.swift */; };
 		8A5F3CD72382619F00B96748 /* Training2_Understand_LayoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F3CD62382619F00B96748 /* Training2_Understand_LayoutUITests.swift */; };
 		8A83FE1F2384C71E009AFB3B /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A83FE1E2384C71E009AFB3B /* MyCustomView.swift */; };
-		8A83FE212384C74C009AFB3B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A83FE202384C74C009AFB3B /* CustomButton.swift */; };
-		8A83FE232384C767009AFB3B /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A83FE222384C767009AFB3B /* CustomLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +51,6 @@
 		8A5F3CD62382619F00B96748 /* Training2_Understand_LayoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training2_Understand_LayoutUITests.swift; sourceTree = "<group>"; };
 		8A5F3CD82382619F00B96748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A83FE1E2384C71E009AFB3B /* MyCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
-		8A83FE202384C74C009AFB3B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		8A83FE222384C767009AFB3B /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +109,6 @@
 				8A5F3CBD2382619F00B96748 /* Assets.xcassets */,
 				8A5F3CBF2382619F00B96748 /* LaunchScreen.storyboard */,
 				8A5F3CC22382619F00B96748 /* Info.plist */,
-				8A83FE202384C74C009AFB3B /* CustomButton.swift */,
-				8A83FE222384C767009AFB3B /* CustomLabel.swift */,
 			);
 			path = "Training2 Understand Layout";
 			sourceTree = "<group>";
@@ -269,11 +263,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5F3CB92382619B00B96748 /* ViewController.swift in Sources */,
-				8A83FE232384C767009AFB3B /* CustomLabel.swift in Sources */,
 				8A83FE1F2384C71E009AFB3B /* MyCustomView.swift in Sources */,
 				8A5F3CB52382619B00B96748 /* AppDelegate.swift in Sources */,
 				8A5F3CB72382619B00B96748 /* SceneDelegate.swift in Sources */,
-				8A83FE212384C74C009AFB3B /* CustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
