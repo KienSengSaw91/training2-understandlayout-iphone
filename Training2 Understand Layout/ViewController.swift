@@ -17,19 +17,51 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        contentView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(contentView)
-        contentView.initView()
-        
-        //Set Content View Constraint To Center
-        contentView.widthAnchor.constraint(equalToConstant: 400).isActive = true
-        contentView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        contentView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        contentView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         
     }
     
+    private func setUpPotraitMode(){
+        print("setUpPotraitMode")
+        
+        view.layoutIfNeeded()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+  
+            //Set Content View Constraint To Center
+            self.contentView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+            self.contentView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            self.contentView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            self.contentView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+     
+        
+    }
     
+    private func setUpLandscapeMode(){
+        print("setUpLandscapeMode")
+        
+        view.layoutIfNeeded()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+       
+            //Set Content View Constraint To Center
+            self.contentView.widthAnchor.constraint(equalToConstant: self.view.frame.width / 2).isActive = true
+            self.contentView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            self.contentView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            self.contentView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+      
+        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        
+        let orientation = UIDevice.current.orientation
+        if (orientation.isLandscape){//If Landscape Mode
+            setUpLandscapeMode()
+            
+        }else if (orientation.isPortrait) {//If Potrait Mode
+            setUpPotraitMode()
+        }
+        
+    }
 }
 
 

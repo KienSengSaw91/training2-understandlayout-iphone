@@ -18,13 +18,17 @@ public class MyCustomView : UIView {
     var logoutBtn : CustomButton!
     var settingBtn : CustomButton!
     
-    public func initView(){
-        
-        setupView()
+    
+    override public init(frame: CGRect) {
+        super.init(frame:frame)
+         setupView()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-    
+
     override public func layoutSubviews() {
         super.layoutSubviews()
         updateLayout()
@@ -34,13 +38,9 @@ public class MyCustomView : UIView {
     func updateLayout(){
         
         let width:CGFloat = self.bounds.width
-        
         let messageLabelRect: CGSize = messageLabel.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
-        
         let logInBtnRect: CGSize = loginBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
-        
         let logOutBtnRect: CGSize = logoutBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
-        
         let settingBtnRect: CGSize = settingBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
         
         var x = width
@@ -50,13 +50,13 @@ public class MyCustomView : UIView {
         
         settingBtn.frame = CGRect(x: x,y:30,width: settingBtnRect.width, height: settingBtnRect.height)
         
-        if loginBtn.isHidden == false {
+        if (!loginBtn.isHidden) {
             x -= 10
             x -= logInBtnRect.width
             loginBtn.frame   = CGRect(x: x, y:30,width: logInBtnRect.width,   height: logInBtnRect.height)
         }
         
-        if logoutBtn.isHidden == false {
+        if (!logoutBtn.isHidden){
             x -= 10
             x -= logOutBtnRect.width
             logoutBtn.frame  = CGRect(x: x, y:30,width: logOutBtnRect.width,  height: logOutBtnRect.height)
@@ -70,8 +70,9 @@ public class MyCustomView : UIView {
     
     
     func setupView(){
+    
         //messageLabel Setup
-        messageLabel = CustomLabel(frame: CGRect(x: 10, y: 50,width: 0, height: 0))
+        messageLabel = CustomLabel()
         messageLabel.text = messageInfo
         messageLabel.textAlignment = .left
         messageLabel.font = UIFont.systemFont(ofSize: 16)
@@ -79,7 +80,6 @@ public class MyCustomView : UIView {
         
         //loginBtn Setup
         loginBtn = CustomButton()
-        loginBtn.frame = CGRect(x:10, y: 50, width: 0, height: 0)
         loginBtn.setTitle("Login", for: .normal)
         loginBtn.backgroundColor = .blue
         loginBtn.addTarget(self, action: #selector(loginBtnClick), for: .touchUpInside)
@@ -87,8 +87,6 @@ public class MyCustomView : UIView {
         
         //logoutBtn Setup
         logoutBtn = CustomButton()
-        
-        logoutBtn.frame = CGRect(x:10, y: 50, width: 0, height: 0)
         logoutBtn.setTitle("Logout", for: .normal)
         logoutBtn.backgroundColor = .red
         logoutBtn.addTarget(self, action: #selector(logoutBtnClick), for: .touchUpInside)
@@ -96,7 +94,6 @@ public class MyCustomView : UIView {
         
         //settingBtn Setup
         settingBtn = CustomButton()
-        settingBtn.frame = CGRect(x: 10, y: 50, width: 0, height: 0)
         settingBtn.setTitle("Settings", for: .normal)
         settingBtn.backgroundColor = .black
         settingBtn.sizeToFit()
