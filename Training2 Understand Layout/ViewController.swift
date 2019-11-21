@@ -20,9 +20,10 @@ class ViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         
         let orientation = UIDevice.current.orientation
+        
         if (orientation.isLandscape){//If Landscape Mode
             print("setUpLandscapeMode")
-            view.layoutIfNeeded()
+            
             contentView.translatesAutoresizingMaskIntoConstraints = false
             
             //Set Content View Constraint To Center
@@ -33,7 +34,6 @@ class ViewController: UIViewController {
             
         }else if (orientation.isPortrait) {//If Potrait Mode
             print("setUpPotraitMode")
-            view.layoutIfNeeded()
             contentView.translatesAutoresizingMaskIntoConstraints = false
             
             //Set Content View Constraint To Center

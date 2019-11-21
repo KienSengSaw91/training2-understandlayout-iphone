@@ -16,6 +16,7 @@
 		8A5F3CCC2382619F00B96748 /* Training2_Understand_LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F3CCB2382619F00B96748 /* Training2_Understand_LayoutTests.swift */; };
 		8A5F3CD72382619F00B96748 /* Training2_Understand_LayoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5F3CD62382619F00B96748 /* Training2_Understand_LayoutUITests.swift */; };
 		8A83FE1F2384C71E009AFB3B /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A83FE1E2384C71E009AFB3B /* MyCustomView.swift */; };
+		8A9E5F6C23865671004D5DC8 /* LabelSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E5F6B23865671004D5DC8 /* LabelSwitch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		8A5F3CD62382619F00B96748 /* Training2_Understand_LayoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training2_Understand_LayoutUITests.swift; sourceTree = "<group>"; };
 		8A5F3CD82382619F00B96748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A83FE1E2384C71E009AFB3B /* MyCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
+		8A9E5F6B23865671004D5DC8 /* LabelSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSwitch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				8A5F3CBD2382619F00B96748 /* Assets.xcassets */,
 				8A5F3CBF2382619F00B96748 /* LaunchScreen.storyboard */,
 				8A5F3CC22382619F00B96748 /* Info.plist */,
+				8A9E5F6B23865671004D5DC8 /* LabelSwitch.swift */,
 			);
 			path = "Training2 Understand Layout";
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9E5F6C23865671004D5DC8 /* LabelSwitch.swift in Sources */,
 				8A5F3CB92382619B00B96748 /* ViewController.swift in Sources */,
 				8A83FE1F2384C71E009AFB3B /* MyCustomView.swift in Sources */,
 				8A5F3CB52382619B00B96748 /* AppDelegate.swift in Sources */,
