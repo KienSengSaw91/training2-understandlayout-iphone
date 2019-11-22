@@ -23,6 +23,17 @@ public class LabelSwitch : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override public func sizeThatFits(_ size: CGSize) -> CGSize {
+        
+        let titleLabelSize = self.titleLabel.frame.size
+        let switchBtnSize = self.switchBtn.frame.size
+        
+        //Add Width titleLabelSize + switchBtnSize
+        let width = titleLabelSize.width + switchBtnSize.width
+        let s = CGSize(width: width, height: size.height)
+        
+        return s
+    }
     
     override public func layoutSubviews() {
         super.layoutSubviews()
@@ -33,24 +44,20 @@ public class LabelSwitch : UIView {
         
         var x = width
         
-        x += titleLabelRect.width + 5
+        //Gap = 5
+        x -= 5
+        x -= switchBtnRect.width
         switchBtn.frame = CGRect(x: x, y:0, width: switchBtnRect.width,  height: switchBtnRect.height)
         
-        titleLabel.frame = CGRect(x: 0, y:5, width: titleLabelRect.width,  height: titleLabelRect.height)
+        x -= 5
+        x -= titleLabelRect.width
+        titleLabel.frame = CGRect(x: x, y:5, width: titleLabelRect.width,  height: titleLabelRect.height)
         
-        print("titleLabelRect : \(titleLabelRect.width) , switchBtnRect : \(switchBtnRect.width)")
         
     }
     
     public func setTitle(title: String){
         titleLabel.text = title
-    }
-    
-    public func buttonTap(){
-        print("buttonTap")
-        
-        switchBtn.addTarget(self, action: #selector(switchValueDidChange(_:)), for: .valueChanged)
-        
     }
     
     private func setupView(){
@@ -59,7 +66,6 @@ public class LabelSwitch : UIView {
         titleLabel.textAlignment = .left
         titleLabel.font = UIFont.systemFont(ofSize: 16)
         
-        
         switchBtn.isOn = true
         switchBtn.setOn(true, animated: false)
         
@@ -67,20 +73,4 @@ public class LabelSwitch : UIView {
         addSubview(switchBtn)
     }
     
-    @objc func switchValueDidChange(_ sender: UISwitch!) {
-        
-        print("off")
-        
-        if (sender.isOn == true){
-            print("UISwitch state is now ON")
-            sender.isOn = false
-        }
-        else{
-            sender.isOn = true
-            print("UISwitch state is now Off")
-        }
-        
-        setNeedsLayout()
-        
-    }
 }

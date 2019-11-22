@@ -10,41 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var contentView = MyCustomView()
+    var contentView : MyCustomView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(contentView)
+        contentView = MyCustomView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(contentView)
+        
+        //Set Content View Constraint To Center
+        contentView.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor).isActive = true
+        contentView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        contentView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        contentView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
     }
     
-    override func viewWillLayoutSubviews() {
-        
-        let orientation = UIDevice.current.orientation
-        
-        if (orientation.isLandscape){//If Landscape Mode
-            print("setUpLandscapeMode")
-            
-            contentView.translatesAutoresizingMaskIntoConstraints = false
-            
-            //Set Content View Constraint To Center
-            self.contentView.widthAnchor.constraint(equalToConstant: self.view.frame.width / 1.2).isActive = true
-            self.contentView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-            self.contentView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-            self.contentView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-            
-        }else if (orientation.isPortrait) {//If Potrait Mode
-            print("setUpPotraitMode")
-            contentView.translatesAutoresizingMaskIntoConstraints = false
-            
-            //Set Content View Constraint To Center
-            self.contentView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-            self.contentView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-            self.contentView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-            self.contentView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-            
-        }
-        
-    }
 }
 
 

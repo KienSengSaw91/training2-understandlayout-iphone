@@ -35,7 +35,7 @@ public class MyCustomView : UIView {
         
         let width:CGFloat = self.bounds.width
         let messageLabelRect: CGSize = messageLabel.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
-        let switch1Rect: CGSize = switch1.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
+        let switch1Rect: CGSize = switch1.sizeThatFits(CGSize(width:frame.width, height: 50))
         let logInBtnRect: CGSize = loginBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
         let logOutBtnRect: CGSize = logoutBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
         let settingBtnRect: CGSize = settingBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
@@ -59,30 +59,32 @@ public class MyCustomView : UIView {
             x -= logOutBtnRect.width
             logoutBtn.frame  = CGRect(x: x, y:30,width: logOutBtnRect.width,  height: logOutBtnRect.height)
             
-            x = switch1Rect.width + 10
-            loginBtn.frame   = CGRect(x: x, y:30,width: logInBtnRect.width,   height: logInBtnRect.height)
         }
         
-        x = messageLabelRect.width + 50
+        
+        x -= 10
+        x -= switch1Rect.width
         switch1.frame = CGRect(x: x,y:30,width: switch1Rect.width, height: switch1Rect.height)
         
         x -= 10
-        messageLabel.frame = CGRect(x:10, y:35, width: messageLabelRect.width,  height: messageLabelRect.height)
+        //x -= messageLabelRect.width
+        messageLabel.frame = CGRect(x:0, y:35, width: x - 10,  height: messageLabelRect.height)
         
         
     }
     
     
     private func setupView(){
+        
+        
         //messageLabel Setup
         messageLabel.text = "Last log in 2019/11/07 12:00"
         messageLabel.textAlignment = .left
         messageLabel.font = UIFont.systemFont(ofSize: 16)
+        messageLabel.lineBreakMode = NSLineBreakMode.byTruncatingHead
         
         //switch 1 setup
         switch1.setTitle(title: "Automatic Login")
-        switch1.buttonTap()
-        
         
         //loginBtn Setup
         loginBtn.setTitle("Login", for: .normal)
