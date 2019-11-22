@@ -24,12 +24,11 @@ public class LabelSwitch : UIView {
     }
     
     override public func sizeThatFits(_ size: CGSize) -> CGSize {
-        
         let titleLabelSize = self.titleLabel.frame.size
         let switchBtnSize = self.switchBtn.frame.size
         
         //Add Width titleLabelSize & switchBtnSize
-        let width = titleLabelSize.width + switchBtnSize.width
+        let width = titleLabelSize.width + switchBtnSize.width + CGFloat(5)// Add gap 5
         let s = CGSize(width: width, height: size.height)
         
         return s
@@ -44,15 +43,11 @@ public class LabelSwitch : UIView {
         
         var x = width
         
-        //Gap = 5
-        x -= 5
-        x -= switchBtnRect.width
+        titleLabel.frame = CGRect(x: 0, y:5, width: titleLabelRect.width,  height: titleLabelRect.height)
+        
+        //switchBtn add gap =  5
+        x = titleLabelRect.width + 5
         switchBtn.frame = CGRect(x: x, y:0, width: switchBtnRect.width,  height: switchBtnRect.height)
-        
-        x -= 5
-        x -= titleLabelRect.width
-        titleLabel.frame = CGRect(x: x, y:5, width: titleLabelRect.width,  height: titleLabelRect.height)
-        
         
     }
     
