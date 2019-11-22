@@ -30,10 +30,10 @@ public class MyCustomView : UIView {
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-    
+        
         let width:CGFloat = self.bounds.width
         let messageLabelRect: CGSize = messageLabel.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
-        let switch1Rect: CGSize = switch1.sizeThatFits(CGSize(width:frame.width, height: 50))
+        let switch1Rect: CGSize = switch1.sizeThatFits(CGSize(width:frame.width, height: CGFloat.greatestFiniteMagnitude))
         let logInBtnRect: CGSize = loginBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
         let logOutBtnRect: CGSize = logoutBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
         let settingBtnRect: CGSize = settingBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
@@ -43,37 +43,33 @@ public class MyCustomView : UIView {
         x -= 10
         x -= settingBtnRect.width
         
-        settingBtn.frame = CGRect(x: x,y:30,width: settingBtnRect.width, height: settingBtnRect.height)
+        settingBtn.frame = CGRect(x: x,y:0,width: settingBtnRect.width, height: settingBtnRect.height)
         
         if (!loginBtn.isHidden) {
             x -= 10
             x -= logInBtnRect.width
-            loginBtn.frame   = CGRect(x: x, y:30,width: logInBtnRect.width,   height: logInBtnRect.height)
+            loginBtn.frame   = CGRect(x: x, y:0,width: logInBtnRect.width,   height: logInBtnRect.height)
             
         }
         
         if (!logoutBtn.isHidden){
             x -= 10
             x -= logOutBtnRect.width
-            logoutBtn.frame  = CGRect(x: x, y:30,width: logOutBtnRect.width,  height: logOutBtnRect.height)
+            logoutBtn.frame  = CGRect(x: x, y:0,width: logOutBtnRect.width,  height: logOutBtnRect.height)
             
         }
         
-        
         x -= 10
         x -= switch1Rect.width
-        switch1.frame = CGRect(x: x,y:30,width: switch1Rect.width, height: switch1Rect.height)
+        switch1.frame = CGRect(x: x,y:0,width: switch1Rect.width, height: switch1Rect.height)
         
         x -= 10
-        //x -= messageLabelRect.width
-        messageLabel.frame = CGRect(x:0, y:35, width: x - 10,  height: messageLabelRect.height)
-        
+        messageLabel.frame = CGRect(x:0, y:messageLabel.center.y / 2, width: x - 10,  height: messageLabelRect.height)
         
     }
     
     
     private func setupView(){
-        
         
         //messageLabel Setup
         messageLabel.text = "Last log in 2019/11/07 12:00"

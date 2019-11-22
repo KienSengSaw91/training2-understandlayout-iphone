@@ -28,7 +28,7 @@ public class LabelSwitch : UIView {
         let titleLabelSize = self.titleLabel.frame.size
         let switchBtnSize = self.switchBtn.frame.size
         
-        //Add Width titleLabelSize + switchBtnSize
+        //Add Width titleLabelSize & switchBtnSize
         let width = titleLabelSize.width + switchBtnSize.width
         let s = CGSize(width: width, height: size.height)
         
@@ -71,6 +71,7 @@ public class LabelSwitch : UIView {
         
         addSubview(titleLabel)
         addSubview(switchBtn)
+        
     }
     
 }
