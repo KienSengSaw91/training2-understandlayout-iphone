@@ -30,9 +30,7 @@ public class MyCustomView : UIView {
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-        print("layoutSubviews")
-        
-        
+    
         let width:CGFloat = self.bounds.width
         let messageLabelRect: CGSize = messageLabel.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
         let switch1Rect: CGSize = switch1.sizeThatFits(CGSize(width:frame.width, height: 50))
@@ -90,18 +88,33 @@ public class MyCustomView : UIView {
         loginBtn.setTitle("Login", for: .normal)
         loginBtn.backgroundColor = .blue
         loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        loginBtn.titleLabel?.textAlignment = .center
+        loginBtn.layer.cornerRadius = 6
+        //Add padding around text
+        loginBtn.titleEdgeInsets = UIEdgeInsets(top: -10,left: -10,bottom: -10,right: -10)
+        loginBtn.contentEdgeInsets = UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
         loginBtn.addTarget(self, action: #selector(loginBtnClick), for: .touchUpInside)
         
         //logoutBtn Setup
         logoutBtn.setTitle("Logout", for: .normal)
         logoutBtn.backgroundColor = .red
         logoutBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        logoutBtn.titleLabel?.textAlignment = .center
+        logoutBtn.layer.cornerRadius = 6
+        //Add padding around text
+        logoutBtn.titleEdgeInsets = UIEdgeInsets(top: -10,left: -10,bottom: -10,right: -10)
+        logoutBtn.contentEdgeInsets = UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
         logoutBtn.addTarget(self, action: #selector(logoutBtnClick), for: .touchUpInside)
         
         //settingBtn Setup
         settingBtn.setTitle("Settings", for: .normal)
         settingBtn.backgroundColor = .black
         settingBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        settingBtn.titleLabel?.textAlignment = .center
+        settingBtn.layer.cornerRadius = 6
+        //Add padding around text
+        settingBtn.titleEdgeInsets = UIEdgeInsets(top: -10,left: -10,bottom: -10,right: -10)
+        settingBtn.contentEdgeInsets = UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
         
         addSubview(messageLabel)
         addSubview(switch1)
