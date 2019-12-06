@@ -33,8 +33,8 @@ public class MyCustomView : UIView {
         
         let width:CGFloat = self.bounds.width
         let messageLabelRect: CGSize = messageLabel.sizeThatFits(CGSize(width: frame.width, height: frame.height))
-        let switch1Rect: CGSize = switch1.sizeThatFits(CGSize(width:100, height: 100))
-        let logInBtnRect: CGSize = loginBtn.sizeThatFits(CGSize(width: frame.size.width, height: frame.height))
+        let switch1Rect: CGSize = switch1.sizeThatFits(CGSize(width:frame.width, height: frame.height))
+        let logInBtnRect: CGSize = loginBtn.sizeThatFits(CGSize(width: frame.width, height: frame.height))
         let logOutBtnRect: CGSize = logoutBtn.sizeThatFits(CGSize(width: frame.width, height: frame.height))
         let settingBtnRect: CGSize = settingBtn.sizeThatFits(CGSize(width: frame.width, height: frame.height))
         
