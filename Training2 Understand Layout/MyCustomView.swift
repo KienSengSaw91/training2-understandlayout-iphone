@@ -26,7 +26,6 @@ public class MyCustomView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override public func layoutSubviews() {
         super.layoutSubviews()
         
@@ -59,7 +58,6 @@ public class MyCustomView : UIView {
         x -= 10
         x -= switch1Rect.width
         switch1.frame = CGRect(x: x,y:0,width: switch1Rect.width, height: switch1Rect.height)
-        print("MyCustomView, switch1Rect Size : \(switch1Rect)")
         
         x -= 10
         messageLabel.frame = CGRect(x:0, y:messageLabel.center.y / 2, width: x - 10,  height: messageLabelRect.height)

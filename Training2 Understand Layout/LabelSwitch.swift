@@ -31,9 +31,9 @@ public class LabelSwitch : UIView {
         let width = titleLabelSize.width + switchBtnSize.width + CGFloat(5)// Add gap 5
         
         //Add Height titleLabelSize & switchBtnSize
-        let height = titleLabelSize.height + switchBtnSize.height
+        let height = max(titleLabelSize.height , switchBtnSize.height)
         
-        let totalsize = (CGSize(width: width, height: height))
+        let totalsize = (CGSize(width: width, height: height))//height,size.height,self.frame.height
         
         print("sizeThatFits : titleLabelSize \(totalsize)")
         return totalsize
@@ -63,6 +63,7 @@ public class LabelSwitch : UIView {
     
     private func setupView(){
         
+        //self.backgroundColor = .cyan
         //Set Up title label
         titleLabel.textAlignment = .left
         titleLabel.font = UIFont.systemFont(ofSize: 16)
