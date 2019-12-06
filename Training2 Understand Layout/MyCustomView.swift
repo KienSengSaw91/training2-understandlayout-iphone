@@ -17,7 +17,6 @@ public class MyCustomView : UIView {
     private let settingBtn : UIButton = UIButton()
     private let switch1 : LabelSwitch = LabelSwitch()
     
-    
     override public init(frame: CGRect) {
         super.init(frame:frame)
         setupView()
@@ -33,7 +32,7 @@ public class MyCustomView : UIView {
         
         let width:CGFloat = self.bounds.width
         let messageLabelRect: CGSize = messageLabel.sizeThatFits(CGSize(width: frame.width, height: frame.height))
-        let switch1Rect: CGSize = switch1.sizeThatFits(CGSize(width:frame.width, height: frame.height))
+        let switch1Rect: CGSize = switch1.sizeThatFits(CGSize(width:frame.width, height:frame.height))
         let logInBtnRect: CGSize = loginBtn.sizeThatFits(CGSize(width: frame.width, height: frame.height))
         let logOutBtnRect: CGSize = logoutBtn.sizeThatFits(CGSize(width: frame.width, height: frame.height))
         let settingBtnRect: CGSize = settingBtn.sizeThatFits(CGSize(width: frame.width, height: frame.height))
@@ -49,20 +48,18 @@ public class MyCustomView : UIView {
             x -= 10
             x -= logInBtnRect.width
             loginBtn.frame   = CGRect(x: x, y:0,width: logInBtnRect.width,   height: logInBtnRect.height)
-            
         }
         
         if (!logoutBtn.isHidden){
             x -= 10
             x -= logOutBtnRect.width
             logoutBtn.frame  = CGRect(x: x, y:0,width: logOutBtnRect.width,  height: logOutBtnRect.height)
-            
         }
         
         x -= 10
         x -= switch1Rect.width
         switch1.frame = CGRect(x: x,y:0,width: switch1Rect.width, height: switch1Rect.height)
-        print("switch1Rect Size : \(switch1Rect)")
+        print("MyCustomView, switch1Rect Size : \(switch1Rect)")
         
         x -= 10
         messageLabel.frame = CGRect(x:0, y:messageLabel.center.y / 2, width: x - 10,  height: messageLabelRect.height)
@@ -113,8 +110,6 @@ public class MyCustomView : UIView {
         settingBtn.titleEdgeInsets = UIEdgeInsets(top: -10,left: -10,bottom: -10,right: -10)
         settingBtn.contentEdgeInsets = UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
         
-        
-       
         
         addSubview(messageLabel)
         addSubview(switch1)
