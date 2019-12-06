@@ -32,7 +32,7 @@ public class LabelSwitch : UIView {
         //Add Width titleLabelSize & switchBtnSize
         let width = titleLabelSize.width + switchBtnSize.width + CGFloat(5)// Add gap 5
         let s = CGSize(width: width, height: size.height)
-        
+         print("titleLabelSize \(titleLabelSize) , switchBtnSize\(switchBtnSize) , total \(s)")
         return s
     }
     
@@ -40,8 +40,8 @@ public class LabelSwitch : UIView {
         super.layoutSubviews()
         
         let width : CGFloat = self.bounds.width
-        let titleLabelRect: CGSize = titleLabel.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
-        let switchBtnRect: CGSize = switchBtn.sizeThatFits(CGSize(width: frame.width, height: CGFloat.greatestFiniteMagnitude))
+        let titleLabelRect: CGSize = titleLabel.sizeThatFits(CGSize(width: frame.width, height: frame.height))
+        let switchBtnRect: CGSize = switchBtn.sizeThatFits(CGSize(width: frame.width, height: frame.height))
         
         var x = width
         
